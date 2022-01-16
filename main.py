@@ -7,6 +7,7 @@ def init():
     pass
     pass
     pass
+    pass
 def main():
     print("1. 404 체커")
     print("2. console 확인")
