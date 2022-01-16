@@ -10,9 +10,11 @@ def json_manager(data):
     if data == "check":
         if not os.path.isfile('CONFIG.json'):
             return False
+
     if data == "makefile":
         f = open('CONFIG.json', 'w')
         f.close()
+
     if data == "edit":
         with open('CONFIG.json') as f:
             json_object = json.load(f)
@@ -34,12 +36,17 @@ def json_manager(data):
 def main():
     if json_manager("check") == False:
         json_manager("makefile")
+    print("SEARCH-CONSOLE Tools")
     print("1. 404 체커")
     print("2. console 확인")
-    print("><><><><><><><><><><><")
     input_data = input("NUMBER --> ")
     if input_data == "1":
-        json_manager("NEW_add")
+        checker404()
+
+def checker404():
+    print("확인할 페이지 범위를 입력하세요.")
+    start_page = input("시작 페이지 : ")
+    end_page = input("마지막 페이지 : ")
 
 def console():
     driver=webdriver.Chrome(ChromeDriverManager().install())
