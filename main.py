@@ -30,16 +30,10 @@ def json_manager(data):
         with open('CONFIG.json', 'w') as f:
             json_string = json.dump(json_data, f, indent=2)
 
-def init():
-    if os.path.isfile('CONFIG.json'):
-        with open('CONFIG.json') as f:
-            json_object = json.load(f)
-    else:
-        f = open('CONFIG.json', 'w')
-        f.close()
-        
 
 def main():
+    if json_manager("check") == False:
+        json_manager("makefile")
     print("1. 404 체커")
     print("2. console 확인")
     print("><><><><><><><><><><><")
@@ -54,5 +48,4 @@ def console():
     driver.quit()
 
 while True:
-    init()
     main()
