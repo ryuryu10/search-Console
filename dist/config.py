@@ -7,8 +7,11 @@ def load():
     return json_object
 
 def isfile():
-    if not os.path.isfile('CONFIG.json'):
-        return False
-    else:
+    if os.path.isfile('CONFIG.json'):
         return True
+    else:
+        return False
 
+def make():
+    f = open('CONFIG.json', 'w')
+    f.close()
