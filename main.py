@@ -1,10 +1,14 @@
 
 from re import search
+from tracemalloc import start
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
+from dist import config
+from dist import printer
 import json
 import os
+
 
 def json_manager(data):
     if data == "check":
@@ -36,17 +40,22 @@ def json_manager(data):
 def main():
     if json_manager("check") == False:
         json_manager("makefile")
-    print("SEARCH-CONSOLE Tools")
-    print("1. 404 체커")
-    print("2. console 확인")
-    input_data = input("NUMBER --> ")
+    printer.title()
+    print("1. 블로그 링크 확인")
+    print("2. Serach Console 확인")
+    print("3. 설정값 확인 & 편집")
+    input_data = input("번호를 입력하세요 : ")
     if input_data == "1":
-        checker404()
+        os.system('cls')
+        print("확인할 페이지 범위를 입력하세요.")
+        start_page = input("시작 페이지 : ")
+        end_page = input("마지막 페이지 : ")
+        scan_range = []
+        for temp in range(int(start_page), int(end_page)+1):
+            scan_range.append(temp)
+        print(f"스캔할 범위는 : {scan_range}입니다")
 
-def checker404():
-    print("확인할 페이지 범위를 입력하세요.")
-    start_page = input("시작 페이지 : ")
-    end_page = input("마지막 페이지 : ")
+
 
 def console():
     driver=webdriver.Chrome(ChromeDriverManager().install())
