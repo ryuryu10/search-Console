@@ -1,32 +1,45 @@
 import keyboard
 import os
 
-NUMBER = 1
+selection_range = 3
+print_data = ['aaa','bbb','ccc']
 
-def output():
+
+selected = 0
+
+def show_menu():
+    global selected
     os.system('cls')
-    global NUMBER
     print("Choose an option:")
-
-    for i in range(1, 5):
-        print("{1} {0}. Do something {0} {2}".format(i, ">" if selected == i else " ", "<" if selected == i else " "))
+    for i in range(0, selection_range):
+        print("{1} {0} {3} {0} {2}".format(i, ">" if selected == i else " ", "<" if selected == i else " ", print_data[i]))
 
 def up():
     global selected
-    if selected == 1:
+    if selected == 0:
         return
     selected -= 1
     show_menu()
 
 def down():
     global selected
-    if selected == 4:
+    if selected == selection_range-1:
         return
     selected += 1
     show_menu()
 
-def menu(number, data):
-    output()
+def exit():
+    global selected
+    print(selected)
+
+def menu(len_number, datas):
+    global selection_range, print_data
+    selection_range = len_number
+    print_data = datas
+    show_menu()
     keyboard.add_hotkey('up', up)
     keyboard.add_hotkey('down', down)
+    keyboard.add_hotkey('enter',exit)
     keyboard.wait()
+
+menu(7,['a','b','c','d','e','f','g','h','i'])
