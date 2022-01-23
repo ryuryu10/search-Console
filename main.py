@@ -36,23 +36,8 @@ def json_manager(data):
             link = json_string["addr"]
 
 def main():
-    if config.isfile() == False:
-        config.make()
-    printer.title()
-    print("1. 링크 확인")
-    print("2. 색인 여부 확인")
-    print("3. 설정값 확인 & 편집\n")
-
-    input_data = input("번호를 입력하세요 : ")
-    if input_data == "1":
-        print("확인할 페이지 범위를 입력하세요.")
-        start_page = input("시작 페이지 : ")
-        end_page = input("마지막 페이지 : ")
-        scan_range = []
-        for temp in range(int(start_page), int(end_page)+1):
-            scan_range.append(temp)
-        print(f"스캔할 범위는 : {scan_range}입니다")
-        scanner.start(link, scan_range)
+    print("구글 서치 콘솔 간편 도구")
+    print("원하시는 기능을 선택해 주세요.")
         
         
 
