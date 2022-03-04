@@ -1,40 +1,50 @@
 import keyboard
 import os
 
-from pandas import options
-
 selection_range = 3
 print_data = ['aaa','bbb','ccc']
 selected = 0
+func_active = True
 
 def up():
-    global selected
-    if selected == 0:
-        return
-    selected -= 1
-    show_menu()
+    if func_active == True:
+        global selected
+        if selected == 0:
+            return
+        selected -= 1
+        show_menu()
+    else:
+        pass
 
 def down():
-    global selected
-    if selected == selection_range-1:
-        return
-    selected += 1
-    show_menu()
+    if func_active == True:
+        global selected
+        if selected == len(options)-1:
+            return
+        selected += 1
+        show_menu()
+    else:
+        pass
 
 def exit():
-    global selected
+    global selected, func_active
+    func_active = False
     print(selected)
-
-
-
+    return selected
+    
 
 def show_menu():
-    global selected
-    os.system('cls')
-    print("Choose an option:")
-    for i in range(0, selection_range):
-        print("{1} {0} {3} {0} {2}".format(i, ">" if selected == i else " ", "<" if selected == i else " ", print_data[i]))
-
+    global title, options, selected
+    os.system('clear')
+    print("원하시는 작업을 선택하세요.")
+    for a in range(0, len(options)):
+        print('{1} [{0}] {3} {2}'.format(
+            a,
+            "-->" if selected == a else "   ",
+            "<--" if selected == a else "   ",
+            options[a]
+            ))
+    
 def data(input_title, input_options):
     global title, options
     title = input_title
@@ -46,4 +56,4 @@ def data(input_title, input_options):
     keyboard.add_hotkey('enter',exit)
     keyboard.wait()
 
-menu(7,['a','b','c','d','e','f','g','h','i'])
+    return selected

@@ -1,7 +1,6 @@
 import keyboard
 import os
 
-from sqlalchemy import func
 from function import temper
 
 print_menus = ['대기','환경설정']
