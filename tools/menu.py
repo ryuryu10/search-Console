@@ -1,18 +1,11 @@
 import keyboard
 import os
 
+from pandas import options
+
 selection_range = 3
 print_data = ['aaa','bbb','ccc']
-
-
 selected = 0
-
-def show_menu():
-    global selected
-    os.system('cls')
-    print("Choose an option:")
-    for i in range(0, selection_range):
-        print("{1} {0} {3} {0} {2}".format(i, ">" if selected == i else " ", "<" if selected == i else " ", print_data[i]))
 
 def up():
     global selected
@@ -32,10 +25,21 @@ def exit():
     global selected
     print(selected)
 
-def menu(len_number, datas):
-    global selection_range, print_data
-    selection_range = len_number
-    print_data = datas
+
+
+
+def show_menu():
+    global selected
+    os.system('cls')
+    print("Choose an option:")
+    for i in range(0, selection_range):
+        print("{1} {0} {3} {0} {2}".format(i, ">" if selected == i else " ", "<" if selected == i else " ", print_data[i]))
+
+def data(input_title, input_options):
+    global title, options
+    title = input_title
+    options = input_options
+
     show_menu()
     keyboard.add_hotkey('up', up)
     keyboard.add_hotkey('down', down)

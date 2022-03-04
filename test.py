@@ -4,7 +4,7 @@ import os
 from sqlalchemy import func
 from function import temper
 
-print_menus = ['설정값 보기','유승우','대학을 가고싶다 나는ㄴ!!','가고싶다고오오오오오오']
+print_menus = ['대기','환경설정']
 
 selected = 0
 func_active = True

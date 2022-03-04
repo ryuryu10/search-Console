@@ -1,2 +1,0 @@
-def aaaa():
-    print("aaaaaaaaaa")
